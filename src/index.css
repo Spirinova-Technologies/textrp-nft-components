@@ -1,13 +1,68 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@layer components {
+  .btn{
+    @apply bg-primary/400 border border-primary/400 text-white font-medium p-2 px-4 rounded-lg flex items-center gap-2 hover:opacity-80
+  }
 }
 
-code {
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  font-family: "Montserrat", sans-serif;
+}
+
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+} */
+
+.ant-tabs-top >.ant-tabs-nav::before, .ant-tabs-bottom >.ant-tabs-nav::before, .ant-tabs-top >div>.ant-tabs-nav::before, .ant-tabs-bottom >div>.ant-tabs-nav::before{
+  /* border-bottom: 1px #E2D2F9 !important; */
 }
+
+.ant-tabs-card >.ant-tabs-nav .ant-tabs-tab {
+  border: 0px solid #E2D2F9 !important;
+  background: transparent !important;
+  border-bottom: 0px !important;
+}
+
+.ant-tabs-card >.ant-tabs-nav .ant-tabs-tab-active{
+  border: 1px solid #E2D2F9 !important;
+  background: #F6F2FC !important;
+  color: #344054 !important;
+  border-bottom: 0px !important;
+}
+
+.ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+  color: #344054 !important;
+}
+
+.ant-tabs-nav{
+  margin: 0 !important;
+}
+
+
+
+.ant-select-selector{
+  border: 1px solid #E2D2F9 !important;
+}
+.ant-select-selection-item{
+  color: #8949E9;
+  font-weight: 600 !important;
+}
+
+/* .ant-tabs .ant-tabs-tab:hover{} */
