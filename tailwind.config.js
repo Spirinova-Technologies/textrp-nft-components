@@ -6,6 +6,7 @@ module.exports = {
       colors: {
         "base/30": "#FEFEFE",
         "gray/50": "#F9FAFB",
+        "gray/100": "#F2F4F7",
         "gray/200": "#EAECF0",
         "gray/400": "#98A2B3",
         "gray/500": "#667085",
@@ -27,6 +28,7 @@ module.exports = {
         "success/500": "#12B76A",
         "success/700": "#027A48",
         "error/500": "#F04438",
+        "warning/500": "#F79009",
       }
     },
   },

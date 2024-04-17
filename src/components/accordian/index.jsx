@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
 import nft from "../../assets/small-nft.png";
 
-const Accordian = ({ title }) => {
+const Accordian = ({ title, incoming, recieved, listed }) => {
   const [open, setOpen] = useState(false);
   return (
     <div className="border border-primary-text/50 bg-primary/25 p-5 rounded-md">
@@ -32,9 +32,26 @@ const Accordian = ({ title }) => {
                 </h3>
               </div>
             </div>
-            <button className="bg-success/500 text-white font-medium text-sm px-3 py-1 rounded-md">
+
+            {recieved || listed && <h1 className="text-base text-gray/700 font-semibold">200 XRP</h1>}
+
+            {incoming && <button className="bg-success/500 text-white font-medium text-sm px-3 py-1 rounded-md">
               Accept Transfer
-            </button>
+            </button>}
+
+            {recieved && <div className="space-x-2">
+              <button className="bg-success/500 text-white font-medium text-sm px-3 py-1 rounded-md">
+                Accept
+              </button>
+              <button className="bg-warning/500 text-white font-medium text-sm px-3 py-1 rounded-md">
+                Counter
+              </button>
+            </div>}
+
+            {listed && <button className="bg-error/500 text-white font-medium text-sm px-3 py-1 rounded-md">
+              Cancel
+            </button>}
+
           </div>
         </div>
       )}
