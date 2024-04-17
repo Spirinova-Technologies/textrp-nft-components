@@ -27,7 +27,7 @@ const Home = () => {
         <Tabs type="card" defaultActiveKey="1" items={items} className="" />
       </div>
 
-      <div className="w-[550px] mt-10">
+      {/* <div className="w-[550px] mt-10">
         <div className="border border-primary-text/50 bg-[#F6F2FC] p-5 rounded-md">
           <h1 className="text-lg font-semibold text-center">Participant NFTs</h1>
           <div className="flex justify-center gap-5 mt-3">
@@ -55,7 +55,7 @@ const Home = () => {
             <ParticipantCard variant={true} />
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

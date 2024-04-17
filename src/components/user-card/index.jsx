@@ -5,13 +5,21 @@ import nft3 from "../../assets/nft3.png";
 import { FaAngleDown } from "react-icons/fa6";
 const { Option } = Select;
 
-const UserCard = () => {
+
+const normalizeURI = (uri) => {
+  const ipfsGateway = "https://ipfs.io/ipfs/";
+  return uri.startsWith("http") ? uri : `${ipfsGateway}${uri}`;
+};
+
+const UserCard = ({nfts}) => {
   const [sell, setSell] = useState(false);
   const [transfer, setTransfer] = useState(false);
+  let uri = normalizeURI(nfts.URI);
+  console.log(nfts)
   return (
     <>
       <div className="w-52 rounded-md">
-        <img src={nft} alt="nft" className="rounded-t-lg" />
+        <img src={uri} alt="nft" className="rounded-t-lg" />
         <div className="h-32 bg-white rounded-b-lg p-3 flex flex-col justify-between">
           <h3 className="text-gray/700 font-semibold text-xs">
             Bored Apes XRP Club #3245
