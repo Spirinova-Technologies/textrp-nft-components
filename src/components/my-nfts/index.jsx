@@ -71,7 +71,6 @@ const MyNfts = () => {
         console.error("Error fetching NFT data:", error);
       }
     };
-
     fetchNFTData();
   }, []);
   return (
