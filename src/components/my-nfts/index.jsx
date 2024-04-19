@@ -1,49 +1,17 @@
-// import React from "react";
-// import { Select } from "antd";
-// import { FaAngleDown } from "react-icons/fa6";
-// import UserCard from "../user-card";
-// const { Option } = Select;
-
-// const MyNfts = () => {
-//   return (
-//     <div className="border border-t-0 border-primary-text/50 bg-[#F6F2FC] p-5 rounded-b-md">
-//       <h1 className="text-lg font-semibold text-center">My NFTs</h1>
-//       <div className="flex justify-center gap-5 mt-3">
-//         <Select
-//             className="w-[120px] border-red-500"
-//             defaultActiveFirstOption
-//             suffixIcon={<FaAngleDown className='text-primary/400' />}
-//         >
-//           <Option value="all">All NFTs</Option>
-//           <Option value="sold">Sold</Option>
-//           <Option value="bought">Bought</Option>
-//         </Select>
-//         <Select
-//             className="w-[120px] border-red-500"
-//             defaultActiveFirstOption
-//             suffixIcon={<FaAngleDown className='text-primary/400' />}
-//         >
-//           <Option value="all">Older</Option>
-//           <Option value="sold">Sold</Option>
-//           <Option value="bought">Bought</Option>
-//         </Select>
-//       </div>
-//       <div className="mt-5">
-//         <UserCard />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default MyNfts;
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Select } from "antd";
-import { FaAngleDown } from "react-icons/fa6";
+import { FaAngleDown, FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import UserCard from "../user-card";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Pagination, Navigation } from "swiper/modules";
 const { Option } = Select;
 
 const MyNfts = () => {
   const [nftData, setNftData] = useState([]);
+  const swiperRef = useRef(null);
 
   useEffect(() => {
     const fetchNFTData = async () => {
@@ -74,16 +42,62 @@ const MyNfts = () => {
     fetchNFTData();
   }, []);
   return (
-    <div className="border border-t-0 border-primary-text/50 bg-[#F6F2FC] p-5 rounded-b-md">
+    <div className="border border-t-0 border-primary-text/50 bg-[#F6F2FC] p-5 pr-0 rounded-b-md">
       <h1 className="text-lg font-semibold text-center">My NFTs</h1>
       <div className="flex justify-center gap-5 mt-3">
-        {/* Select components */}
+        {/* <Select
+          className="w-[120px] border-red-500"
+          defaultActiveFirstOption
+          suffixIcon={<FaAngleDown className="text-primary/400" />}
+        >
+          <Option value="all">All NFTs</Option>
+          <Option value="sold">Sold</Option>
+          <Option value="bought">Bought</Option>
+        </Select>
+        <Select
+          className="w-[120px] border-red-500"
+          defaultActiveFirstOption
+          suffixIcon={<FaAngleDown className="text-primary/400" />}
+        >
+          <Option value="all">Older</Option>
+          <Option value="sold">Sold</Option>
+          <Option value="bought">Bought</Option>
+        </Select> */}
       </div>
-      <div className="mt-5 flex flex-wrap justify-center gap-4">
-        {nftData["rUsvgdx6v3XphBuobEJa7SDFr1i6wWNEfJ"] &&
-          nftData["rUsvgdx6v3XphBuobEJa7SDFr1i6wWNEfJ"].map((nfts, index) => {
-            return <UserCard key={index} nfts={nfts} />;
-          })}
+      <div className="mt-5">
+        <Swiper
+          slidesPerView={2.5}
+          spaceBetween={50}
+          pagination={{
+            clickable: true,
+          }}
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          navigation={{
+            prevEl: ".custom-prev",
+            nextEl: ".custom-next",
+          }}
+          modules={[Pagination, Navigation]}
+          className="mySwiper relative"
+        >
+          {nftData["rUsvgdx6v3XphBuobEJa7SDFr1i6wWNEfJ"] &&
+            nftData["rUsvgdx6v3XphBuobEJa7SDFr1i6wWNEfJ"].map((nfts, index) => {
+              return (
+                <SwiperSlide>
+                  <UserCard key={index} nfts={nfts} />
+                </SwiperSlide>
+              );
+            })}
+          <button
+            className={`custom-prev absolute top-[40%] left-0.5 z-50 p-2.5 bg-white border border-primary/200 rounded-lg`}
+          >
+            <FaAngleLeft className="text-primary/500" />
+          </button>
+          <button
+            className={`custom-next absolute top-[40%] right-0.5 z-50 p-2.5 bg-white border border-primary/200 rounded-lg`}
+          >
+            <FaAngleRight className="text-primary/500" />
+          </button>
+        </Swiper>
       </div>
     </div>
   );

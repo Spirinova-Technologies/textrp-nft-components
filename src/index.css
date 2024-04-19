@@ -69,4 +69,19 @@ body {
   font-weight: 600 !important;
 }
 
+
+.swiper-pagination {
+  position: static !important;
+}
+.swiper-pagination-bullet{
+  background-color: #E2D2F9 !important;
+  opacity: 1 !important;
+}
+.swiper-pagination-bullet-active{
+  background-color: #5616B6 !important;
+}
+.custom-prev.swiper-button-disabled, .custom-next.swiper-button-disabled {
+  display: none; /* This hides the buttons when Swiper disables them */
+}
+
 /* .ant-tabs .ant-tabs-tab:hover{} */
