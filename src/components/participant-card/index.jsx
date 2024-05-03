@@ -7,6 +7,9 @@ const { Option } = Select;
 
 const ParticipantCard = ({ variant }) => {
   const [counter, setCounter] = useState(false);
+  const handleBuyClick = () => {
+    console.log("Buy button clicked");
+  };
   return (
     <>
       <div className="w-52 rounded-md">
@@ -47,7 +50,10 @@ const ParticipantCard = ({ variant }) => {
 
           {!variant ? (
             <div className="flex justify-between items-center">
-              <button className="btn bg-success/500 border-0 w-20 justify-center items-center text-xs">
+              <button
+                className="btn bg-success/500 border-0 w-20 justify-center items-center text-xs"
+                onClick={handleBuyClick}
+              >
                 Buy
               </button>
               <button

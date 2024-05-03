@@ -16,19 +16,15 @@ const MyNfts = () => {
   useEffect(() => {
     const fetchNFTData = async () => {
       try {
-        const response = await fetch(
-          "https://backend.textrp.io/get-users-nfts",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              addresses: ["rUsvgdx6v3XphBuobEJa7SDFr1i6wWNEfJ"],
-            }),
-          }
-        );
-
+        const response = await fetch("http://127.0.0.1:8080/get-users-nfts", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            addresses: ["rfCWgUcHGzAHF7aSptDF98LPrszcusungS"],
+          }),
+        });
         if (!response.ok) {
           throw new Error("Failed to fetch NFT data");
         }
@@ -79,8 +75,8 @@ const MyNfts = () => {
           modules={[Pagination, Navigation]}
           className="mySwiper relative"
         >
-          {nftData["rUsvgdx6v3XphBuobEJa7SDFr1i6wWNEfJ"] &&
-            nftData["rUsvgdx6v3XphBuobEJa7SDFr1i6wWNEfJ"].map((nfts, index) => {
+          {nftData["rfCWgUcHGzAHF7aSptDF98LPrszcusungS"] &&
+            nftData["rfCWgUcHGzAHF7aSptDF98LPrszcusungS"].map((nfts, index) => {
               return (
                 <SwiperSlide>
                   <UserCard key={index} nfts={nfts} />

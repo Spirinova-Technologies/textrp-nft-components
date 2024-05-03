@@ -29,8 +29,8 @@ const Home = () => {
   ];
 
   return (
-    <div className="p-10">
-      <div className="w-[550px] h-[550px]">
+    <div className="p-10 ">
+      <div className="w-[550px]">
         <Tabs type="card" defaultActiveKey="1" items={items} className="" />
       </div>
 
